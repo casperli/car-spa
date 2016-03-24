@@ -1,0 +1,8 @@
+# WebStorm stuff
+.idea/
+
+# Node and bower modules
+/bower_components
+/node_modules
+
+

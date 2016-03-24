@@ -1,0 +1,22 @@
+{
+  "name": "simpleFilter",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Andreas Caspers <aca@zuehlke.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
