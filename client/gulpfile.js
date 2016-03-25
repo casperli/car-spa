@@ -8,7 +8,7 @@ gulp.task('default', ['serve']);
 gulp.task('serve', function () {
     browserSync.init({
         server: {
-            baseDir: "./"
+            baseDir: "./app"
         }
     });
 });
