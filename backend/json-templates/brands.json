@@ -1,0 +1,15 @@
+[
+  {
+    "brandCode": "chevy",
+    "name": "Chevrolet"
+  },
+  {
+    "brandCode": "vw",
+    "name": "Volkswagen"
+  },
+  {
+    "brandCode": "toy",
+    "name": "Toyota"
+  }
+]
+
