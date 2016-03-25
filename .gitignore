@@ -1,9 +1,6 @@
 # WebStorm stuff
-.idea/
+.idea/**
 
 # Node and bower modules
-/client/bower_components
-/client/node_modules
-/backend/node_modules
-
-
+**/bower_components
+**/node_modules
