@@ -1,7 +1,13 @@
 body {
     padding-top: 50px;
 }
+
 .starter-template {
     padding: 40px 15px;
     text-align: center;
+}
+
+img.screen-shot {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
