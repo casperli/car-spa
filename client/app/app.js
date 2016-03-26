@@ -4,7 +4,9 @@ var carSpa = angular.module('carSpa', []);
 
 carSpa.controller('CarListController', CarListController);
 
-function CarListController($scope) {
+CarListController.$inject = ['$scope', '$http'];
+
+function CarListController($scope, $http) {
     var vm = this;
 
     vm.isInitialized = false;
@@ -25,11 +27,9 @@ function CarListController($scope) {
 
     function showCars() {
         vm.cars = [];
-        vm.cars.push({
-            name: 'Beetle',
-            brand: 'Volkswagen',
-            year: 1966,
-            colour: 'Red'
+
+        $http.get('http://localhost:8081/api/cars').then(function (response) {
+            vm.cars = angular.copy(response.data);
         });
     }
 
