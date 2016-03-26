@@ -1,7 +1,7 @@
 [
   {
-    "colourCode": "red",
-    "brandCode": "vw",
+    "colour": "Red",
+    "brand": "Volkswagen",
     "name": "Beetle",
     "year": "1965"
   }
