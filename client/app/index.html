@@ -61,6 +61,17 @@
                 </th>
             </tr>
             </thead>
+            <tbody>
+            <tr ng-repeat="car in vm.cars">
+                <td>{{ car.name }}</td>
+                <td>{{ car.brand }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.colour }}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <button ng-click="vm.showCars()">Show cars</button>
+            </tfoot>
         </table>
     </div>
 </div>
