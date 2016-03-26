@@ -39,6 +39,7 @@
             <h2>Getting started</h2>
             <ul>
                 <li>Clone the Basic "SPA" template (contains no SPA so far). <br><code>git clone https://github.com/casperli/car-spa.git</code></li>
+                <li>Switch to git tag 'init': <code>git checkout -f init</code></li>
                 <li>install gulp bower globally <br>
                     <code>npm install -g bower gulp</code>
                 </li>
@@ -64,7 +65,16 @@
                 <li>Add <code>ng-app</code> directive to the body</li>
                 <li>Add a new file app.js</li>
                 <li>Create the basic angular application module:
-                
+                    <code>
+                        var carSpa = angular.module('carSpa', []);
+                    </code>
+                </li>
+                <li>
+                    Now create a controller <code>CarListController</code> that is attached to the <code>div</code> tag wih the id
+                    <strong>viewContainer</strong>.
+                </li>
+                <li>Implement a functionality, that shows a text directly after startup but changes it 2 seconds later.
+                    Use databinding and implement the logic inside the controller. Use the <code>controller as</code> syntax.
                 </li>
             </ul>
         </div>
