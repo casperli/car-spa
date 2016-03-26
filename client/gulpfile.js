@@ -13,10 +13,10 @@ gulp.task('serve', function () {
     });
 });
 
-var htmlWatcher = gulp.watch('./*.html', browserSync.reload);
+var htmlWatcher = gulp.watch('./**/*.html', browserSync.reload);
 htmlWatcher.on('change', logRefresh);
 
-var jsWatcher = gulp.watch('./*.js', browserSync.reload);
+var jsWatcher = gulp.watch('./**/*.js', browserSync.reload);
 jsWatcher.on('change', logRefresh);
 
 function logRefresh(event){
