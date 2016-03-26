@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="starter-template.css">
 </head>
-<body>
+<body ng-app="carSpa">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -31,16 +31,21 @@
     </div>
 </nav>
 
-<div class="container" id="viewContainer">
+<div class="container" id="viewContainer" ng-controller="CarListController as vm" ng-show="vm.showWelcome">
 
     <div class="starter-template">
-        <h1>Welcome to the Car SPA Training</h1>
+        <h1>Start your engines: <span ng-hide="vm.isInitialized">pending</span><span ng-show="vm.isInitialized">wrrrrooooomm.. angular started successfully :-)</span></h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+    <div class="col-md-12" ng-click="">
+        <button ng-click="vm.startWork()">Ok, let's start</button>
     </div>
 
 </div>
+
 <script src="lib/jquery/dist/jquery.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="lib/angular/angular.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
