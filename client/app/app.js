@@ -26,8 +26,6 @@ function CarListController($scope, $http) {
     }
 
     function showCars() {
-        vm.cars = [];
-
         $http.get('http://localhost:8081/api/cars').then(function (response) {
             vm.cars = angular.copy(response.data);
         });
