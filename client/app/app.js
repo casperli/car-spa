@@ -9,6 +9,7 @@ function CarListController($scope) {
 
     vm.isInitialized = false;
     vm.showWelcome = true;
+    vm.cars = [];
 
     function startWork() {
         vm.showWelcome = false;
@@ -22,7 +23,18 @@ function CarListController($scope) {
         }, 2000);
     }
 
+    function showCars() {
+        vm.cars = [];
+        vm.cars.push({
+            name: 'Beetle',
+            brand: 'Volkswagen',
+            year: 1966,
+            colour: 'Red'
+        });
+    }
+
     vm.startWork = startWork;
+    vm.showCars = showCars;
 
     init();
 
