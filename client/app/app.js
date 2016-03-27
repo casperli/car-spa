@@ -30,6 +30,17 @@ function CarListController(CarListService) {
     var vm = this;
 
     vm.cars = [];
+    vm.years = initYears(1960, 2016);
+
+    function initYears(begin, end) {
+        var years = [];
+
+        for (var i = begin; i <= end; i++) {
+            years.push(i);
+        }
+
+        return years;
+    }
 
     function showCars() {
         CarListService.loadCars().then(function (cars) {

@@ -1,30 +1,66 @@
 <h1>The Zuehlke company cars</h1>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Brand
-        </th>
-        <th>
-            Year
-        </th>
-        <th>
-            Colour
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="car in vm.cars">
-        <td>{{ car.name }}</td>
-        <td>{{ car.brand }}</td>
-        <td>{{ car.year }}</td>
-        <td>{{ car.colour }}</td>
-    </tr>
-    </tbody>
-    <tfoot>
-    <button ng-click="vm.showCars()">Show cars</button>
-    </tfoot>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <h3>Filters</h3>
+            </div>
+            <div class="row">
+                <label for="colour" class="col-md-3">Colour:</label>
+                <select id="colour" class="col-md-6">
+                    <option>Red</option>
+                    <option>Blue</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="brand" class="col-md-3">Brand:</label>
+                <select id="brand" class="col-md-6">
+                    <option>Chevrolet</option>
+                    <option>Volkswagen</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="year" class="col-md-3">Year:</label>
+                <select id="year" class="col-md-6">
+                    <option ng-repeat="year in vm.years">{{ year }}</option>
+                </select>
+            </div>
+            <div class="row">
+                <button ng-click="vm.showCars()">Show results</button>
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Brand
+                    </th>
+                    <th>
+                        Year
+                    </th>
+                    <th>
+                        Colour
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="car in vm.cars">
+                    <td>{{ car.name }}</td>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.year }}</td>
+                    <td>{{ car.colour }}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
