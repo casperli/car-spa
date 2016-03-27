@@ -4,9 +4,9 @@ var carSpa = angular.module('carSpa', ['carSpa.services']);
 
 carSpa.controller('CarListController', CarListController);
 
-CarListController.$inject = ['$scope', 'CarListService'];
+CarListController.$inject = ['$scope', '$timeout', 'CarListService'];
 
-function CarListController($scope, CarListService) {
+function CarListController($scope, $timeout, CarListService) {
     var vm = this;
 
     vm.isInitialized = false;
@@ -18,11 +18,11 @@ function CarListController($scope, CarListService) {
     }
 
     function init() {
-        setTimeout(function () {
+        $timeout(function () {
             vm.isInitialized = true;
             // We need this, cause no watched expression is triggered by the setTimeout function
             $scope.$apply();
-        }, 2000);
+        }, 1000);
     }
 
     function showCars() {
