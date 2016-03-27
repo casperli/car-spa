@@ -85,13 +85,20 @@
                 </li>
                 <li>The data should be filled in an array, that is exposed to the view.</li>
             </ul>
-            <h2>Task 2 - Bind the car list to an REST endpoint</h2>
+            <h2>Task 2 - Bind the car list to an REST endpoint (Tag: <code>task-02</code>)</h2>
             <ul>
                 <li>Open another terminal window and navigate into the <code>backend</code> directory. Start the backend with <code>npm start</code>
-                    and verfiy ist running by navigating to <code>http://localhost:8081/</code> in a browser. You should see 3 endpoints listed: brands, cars, colour.
+                    and verfiy ist running by navigating to <code>http://localhost:8081/</code> in a browser. You should see 3 endpoints listed: brands, cars,
+                    colour.
                 </li>
                 <li>Add a dependecy to the <code>$http</code> service to the controller.</li>
                 <li>Inside the controller (function <code>showCars</code>), load the data from the REST endpoint instead of the local array.</li>
+            </ul>
+            <h2>Task 3 - Move backend access into service (Tag: <code>task-03</code></h2>
+            <ul>
+                <li>Create a new service <code>CarListService</code></li>
+                <li>Move the logic to get the data from the backend from the controller into the service</li>
+                <li>Use the new service inside the controller instead of accessing <code>$http</code> directly.</li>
                 <li>"Promisify" the function: The function in the service should return a promise instead of an arry.</li>
                 <li>Modularize: Create a new module for services and put the service into that module.</li>
             </ul>
