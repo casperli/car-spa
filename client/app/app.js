@@ -6,31 +6,49 @@ carSpa.config(urlConfiguration);
 
 urlConfiguration.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-function urlConfiguration($stateProvider, $urlRouterProvider){
- $urlRouterProvider.otherwise('/carList');
-    $stateProvider.state('carList',{
+function urlConfiguration($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/welcome');
+    $stateProvider.state('carList', {
         url: '/carList',
         templateUrl: 'templates/carList.html',
         controller: 'CarListController',
         controllerAs: 'vm'
-    })
+    });
+    $stateProvider.state('welcome', {
+        url: '/welcome',
+        templateUrl: 'templates/welcome.html',
+        controller: 'WelcomeController',
+        controllerAs: 'vm'
+    });
 }
 
 
 carSpa.controller('CarListController', CarListController);
+CarListController.$inject = ['CarListService'];
 
-CarListController.$inject = ['$scope', '$timeout', 'CarListService'];
+function CarListController(CarListService) {
+    var vm = this;
 
-function CarListController($scope, $timeout, CarListService) {
+    vm.cars = [];
+
+    function showCars() {
+        CarListService.loadCars().then(function (cars) {
+            vm.cars = cars;
+        });
+    }
+
+    vm.showCars = showCars;
+
+    return vm;
+}
+
+carSpa.controller('WelcomeController', WelcomeController);
+WelcomeController.$inject = ['$scope', '$timeout'];
+
+function WelcomeController($scope, $timeout) {
     var vm = this;
 
     vm.isInitialized = false;
-    vm.showWelcome = true;
-    vm.cars = [];
-
-    function startWork() {
-        vm.showWelcome = false;
-    }
 
     function init() {
         $timeout(function () {
@@ -39,15 +57,6 @@ function CarListController($scope, $timeout, CarListService) {
             $scope.$apply();
         }, 1000);
     }
-
-    function showCars() {
-        CarListService.loadCars().then(function (cars) {
-            vm.cars = cars;
-        });
-    }
-
-    vm.startWork = startWork;
-    vm.showCars = showCars;
 
     init();
 
