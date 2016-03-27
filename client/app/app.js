@@ -1,6 +1,21 @@
 'use strict'
 
-var carSpa = angular.module('carSpa', ['carSpa.services']);
+var carSpa = angular.module('carSpa', ['ui.router', 'carSpa.services']);
+
+carSpa.config(urlConfiguration);
+
+urlConfiguration.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+function urlConfiguration($stateProvider, $urlRouterProvider){
+ $urlRouterProvider.otherwise('/carList');
+    $stateProvider.state('carList',{
+        url: '/carList',
+        templateUrl: 'templates/carList.html',
+        controller: 'CarListController',
+        controllerAs: 'vm'
+    })
+}
+
 
 carSpa.controller('CarListController', CarListController);
 
