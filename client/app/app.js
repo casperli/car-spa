@@ -1,12 +1,12 @@
 'use strict'
 
-var carSpa = angular.module('carSpa', []);
+var carSpa = angular.module('carSpa', ['carSpa.services']);
 
 carSpa.controller('CarListController', CarListController);
 
-CarListController.$inject = ['$scope', '$http'];
+CarListController.$inject = ['$scope', 'CarListService'];
 
-function CarListController($scope, $http) {
+function CarListController($scope, CarListService) {
     var vm = this;
 
     vm.isInitialized = false;
@@ -26,8 +26,8 @@ function CarListController($scope, $http) {
     }
 
     function showCars() {
-        $http.get('http://localhost:8081/api/cars').then(function (response) {
-            vm.cars = angular.copy(response.data);
+        CarListService.loadCars().then(function (cars) {
+            vm.cars = cars;
         });
     }
 
@@ -37,4 +37,28 @@ function CarListController($scope, $http) {
     init();
 
     return vm;
+}
+
+// We use a new module for services instead of putting the service into the app module directly
+var services = angular.module('carSpa.services', []);
+services.factory('CarListService', CarListService);
+
+CarListService.$inject = ['$http', '$q'];
+
+function CarListService($http, $q) {
+
+    function loadCars() {
+        var deferred = $q.defer();
+
+        $http.get('http://localhost:8081/api/cars').then(function (response) {
+            var cars = angular.copy(response.data);
+            deferred.resolve(cars);
+        })
+
+        return deferred.promise;
+    }
+
+    return {
+        loadCars: loadCars
+    }
 }
