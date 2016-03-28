@@ -87,9 +87,9 @@
             </ul>
             <h2>Task 2 - Bind the car list to an REST endpoint (Tag: <code>task-02</code>)</h2>
             <ul>
-                <li>Open another terminal window and navigate into the <code>backend</code> directory. Start the backend with <code>npm start</code>
-                    and verfiy ist running by navigating to <code>http://localhost:8081/</code> in a browser. You should see 3 endpoints listed: brands, cars,
-                    colour.
+                <li>Install <code>npm install -g json-server</code>. This will be our REST backend.</li>
+                <li>Open another terminal window and navigate into the <code>db</code> directory. Start the backend with <code>json-server db.json</code>
+                    and verfiy ist running by navigating to <code>http://localhost:8081/</code> in a browser.
                 </li>
                 <li>Add a dependecy to the <code>$http</code> service to the controller.</li>
                 <li>Inside the controller (function <code>showCars</code>), load the data from the REST endpoint instead of the local array.</li>
