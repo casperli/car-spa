@@ -4,13 +4,13 @@
       "colour": "Red",
       "brand": "Volkswagen",
       "name": "Beetle (remote)",
-      "year": "1965"
+      "year": 1965
     },
     {
       "colour": "Blue",
       "brand": "Toyota",
       "name": "Prius",
-      "year": "2012"
+      "year": 2012
     }
   ],
   "brands": [
@@ -40,7 +40,7 @@
   ],
   "selectedFilterValues": {
     "yearFilter": {
-      "selectedValue": "2016"
+      "selectedValue": "1965"
     },
     "brandFilter": {
       "selectedValue": "Volkswagen"

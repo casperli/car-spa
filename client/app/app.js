@@ -65,7 +65,8 @@ function CarListController(CarListService, ReferenceDataService) {
             values: [],
             selectedValue: null
         },
-        doSearch: showCars
+        doSearch: showCars,
+        clear: clearFilter
     }
 
     function initReferenceData() {
@@ -84,10 +85,18 @@ function CarListController(CarListService, ReferenceDataService) {
     }
 
     function showCars(filters) {
+        ReferenceDataService.savePresetValues(filters);
+
         CarListService.loadCars(filters.yearFilter.selectedValue, filters.brandFilter.selectedValue, filters.colourFilter.selectedValue)
             .then(function (cars) {
                 vm.cars = cars;
             });
+    }
+
+    function clearFilter(filters) {
+        filters.yearFilter.selectedValue = null;
+        filters.colourFilter.selectedValue = null;
+        filters.brandFilter.selectedValue = null;
     }
 
     initReferenceData();
@@ -170,6 +179,28 @@ function ReferenceDataService($http, $q) {
         return deferred.promise;
     }
 
+    function savePresetValues(filters) {
+        var deferred = $q.defer();
+
+        var toSave = {
+            yearFilter: {
+                selectedValue: filters.yearFilter.selectedValue
+            },
+            brandFilter: {
+                selectedValue: filters.brandFilter.selectedValue
+            },
+            colourFilter: {
+                selectedValue: filters.colourFilter.selectedValue
+            }
+        }
+
+        $http.put('http://localhost:8081/selectedFilterValues', toSave).then(function (response) {
+            deferred.resolve(response.data);
+        });
+
+        return deferred.promise;
+    }
+
     function loadData(apiEntity) {
         var deferred = $q.defer();
 
@@ -195,6 +226,7 @@ function ReferenceDataService($http, $q) {
         loadColours: loadColours,
         loadBrands: loadBrands,
         loadYears: loadYears,
-        loadPresetValues: loadPresetValues
+        loadPresetValues: loadPresetValues,
+        savePresetValues: savePresetValues
     }
 }
