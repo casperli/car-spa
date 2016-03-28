@@ -54,18 +54,17 @@ function CarListController(CarListService) {
 }
 
 carSpa.controller('WelcomeController', WelcomeController);
-WelcomeController.$inject = ['$scope', '$timeout'];
+WelcomeController.$inject = ['$timeout'];
 
-function WelcomeController($scope, $timeout) {
+function WelcomeController($timeout) {
     var vm = this;
 
     vm.isInitialized = false;
 
     function init() {
         $timeout(function () {
+            // By using the $timeout service, no scope.$apply usage is needed anymore
             vm.isInitialized = true;
-            // We need this, cause no watched expression is triggered by the setTimeout function
-            $scope.$apply();
         }, 1000);
     }
 
