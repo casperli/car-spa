@@ -34,13 +34,17 @@ function CarListController(CarListService, ReferenceDataService) {
     vm.colours = [];
     vm.brands = [];
 
-    function initReferenceData(){
-        ReferenceDataService.loadBrands().then(function(data){
+    vm.selectedBrand = {};
+    vm.selectedColour = {};
+    vm.selectedYear = {};
+
+    function initReferenceData() {
+        ReferenceDataService.loadBrands().then(function (data) {
             vm.brands = data;
         });
 
-        ReferenceDataService.loadColours().then(function(data){
-            vm.colours= data;
+        ReferenceDataService.loadColours().then(function (data) {
+            vm.colours = data;
         });
     }
 
@@ -105,7 +109,7 @@ services.factory('ReferenceDataService', ReferenceDataService);
 ReferenceDataService.$inject = ['$http', '$q'];
 
 function ReferenceDataService($http, $q) {
-    
+
     function loadColours() {
         return loadData('colours');
     }
@@ -118,14 +122,14 @@ function ReferenceDataService($http, $q) {
         return initYears(1960, 2016);
     }
 
-    function loadData(apiEntity){
+    function loadData(apiEntity) {
         var deferred = $q.defer();
-        
+
         $http.get('http://localhost:8081/' + apiEntity).then(function (response) {
             var entities = angular.copy(response.data);
             deferred.resolve(entities);
         })
-        
+
         return deferred.promise;
     }
 

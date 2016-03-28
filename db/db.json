@@ -15,26 +15,27 @@
   ],
   "brands": [
     {
-      "brandCode": "chevy",
       "name": "Chevrolet"
     },
     {
-      "brandCode": "vw",
       "name": "Volkswagen"
     },
     {
-      "brandCode": "toy",
       "name": "Toyota"
     }
   ],
   "colours": [
     {
-      "colourCode": "blue",
-      "description": "Blue"
+      "name": "Blue"
     },
     {
-      "colourCode": "red",
-      "description": "Red"
+      "name": "Red"
+    },
+    {
+      "name": "Black"
+    },
+    {
+      "name": "Grey"
     }
   ]
 }
