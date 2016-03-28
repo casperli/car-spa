@@ -34,9 +34,9 @@ function CarListController(CarListService, ReferenceDataService) {
     vm.colours = [];
     vm.brands = [];
 
-    vm.selectedBrand='';
-    vm.selectedColour='';
-    vm.selectedYear;
+    vm.selectedBrand=null;
+    vm.selectedColour=null;
+    vm.selectedYear=null;
 
     function initReferenceData() {
         ReferenceDataService.loadBrands().then(function (data) {
@@ -93,21 +93,10 @@ function CarListService($http, $q) {
     function loadCars(year, brand, colour) {
         var deferred = $q.defer();
 
-        var carAddress = 'http://localhost:8081/cars?';
+        var carAddress = 'http://localhost:8081/cars';
+        var params = {params: {year: year, brand: brand, colour: colour}};
 
-        if (year && !isNaN(year)) {
-            carAddress += 'year=' + year + '&';
-        }
-
-        if (brand && brand != '') {
-            carAddress += 'brand=' + brand + '&';
-        }
-
-        if (colour && colour != '') {
-            carAddress += 'colour=' + colour;
-        }
-
-        $http.get(carAddress).then(function (response) {
+        $http.get(carAddress, params).then(function (response) {
             var cars = angular.copy(response.data);
             deferred.resolve(cars);
         });
