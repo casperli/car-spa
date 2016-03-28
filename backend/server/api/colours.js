@@ -3,7 +3,7 @@
 const SetupEndpoint = require('./setup/setup.js');
 
 module.exports = SetupEndpoint({
-    name: 'colour',
+    name: 'colours',
     urls: [
         {
             params: '',

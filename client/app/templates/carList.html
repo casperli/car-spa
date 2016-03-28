@@ -15,8 +15,7 @@
             <div class="row">
                 <label for="brand" class="col-md-3">Brand:</label>
                 <select id="brand" class="col-md-6">
-                    <option>Chevrolet</option>
-                    <option>Volkswagen</option>
+                    <option ng-repeat="brand in vm.brands">{{ brand.name }}</option>
                 </select>
             </div>
             <div class="row">

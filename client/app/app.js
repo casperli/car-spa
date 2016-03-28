@@ -24,22 +24,24 @@ function urlConfiguration($stateProvider, $urlRouterProvider) {
 
 
 carSpa.controller('CarListController', CarListController);
-CarListController.$inject = ['CarListService'];
+CarListController.$inject = ['CarListService', 'ReferenceDataService'];
 
-function CarListController(CarListService) {
+function CarListController(CarListService, ReferenceDataService) {
     var vm = this;
 
     vm.cars = [];
-    vm.years = initYears(1960, 2016);
+    vm.years = ReferenceDataService.loadYears();
+    vm.colours = [];
+    vm.brands = [];
 
-    function initYears(begin, end) {
-        var years = [];
+    function initReferenceData(){
+        ReferenceDataService.loadBrands().then(function(data){
+            vm.brands = data;
+        });
 
-        for (var i = begin; i <= end; i++) {
-            years.push(i);
-        }
-
-        return years;
+        ReferenceDataService.loadColours().then(function(data){
+            vm.colours= data;
+        });
     }
 
     function showCars() {
@@ -49,6 +51,8 @@ function CarListController(CarListService) {
     }
 
     vm.showCars = showCars;
+
+    initReferenceData();
 
     return vm;
 }
@@ -87,12 +91,57 @@ function CarListService($http, $q) {
         $http.get('http://localhost:8081/api/cars').then(function (response) {
             var cars = angular.copy(response.data);
             deferred.resolve(cars);
-        })
+        });
 
         return deferred.promise;
     }
 
     return {
         loadCars: loadCars
+    }
+}
+
+services.factory('ReferenceDataService', ReferenceDataService);
+ReferenceDataService.$inject = ['$http', '$q'];
+
+function ReferenceDataService($http, $q) {
+    
+    function loadColours() {
+        return loadData('colours');
+    }
+
+    function loadBrands() {
+        return loadData('brands');
+    }
+
+    function loadYears() {
+        return initYears(1960, 2016);
+    }
+
+    function loadData(apiEntity){
+        var deferred = $q.defer();
+        
+        $http.get('http://localhost:8081/api/' + apiEntity).then(function (response) {
+            var entities = angular.copy(response.data);
+            deferred.resolve(entities);
+        })
+        
+        return deferred.promise;
+    }
+
+    function initYears(begin, end) {
+        var years = [];
+
+        for (var i = begin; i <= end; i++) {
+            years.push(i);
+        }
+
+        return years;
+    }
+
+    return {
+        loadColours: loadColours,
+        loadBrands: loadBrands,
+        loadYears: loadYears
     }
 }

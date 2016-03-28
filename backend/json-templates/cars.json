@@ -4,5 +4,11 @@
     "brand": "Volkswagen",
     "name": "Beetle (remote)",
     "year": "1965"
+  },
+  {
+    "colour": "Blue",
+    "brand": "Toyota",
+    "name": "Prius",
+    "year": "2012"
   }
 ]
