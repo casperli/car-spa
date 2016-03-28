@@ -39,7 +39,8 @@ function FilterDropdown() {
         restrict: 'E',
         templateUrl: 'templates/dropdownFilter.html',
         scope: {
-            vm: '=viewModel'
+            vm: '=viewModel',
+            description: '@description'
         }
     }
 }
@@ -97,6 +98,7 @@ function CarListController(CarListService, ReferenceDataService) {
         filters.yearFilter.selectedValue = null;
         filters.colourFilter.selectedValue = null;
         filters.brandFilter.selectedValue = null;
+        showCars(filters);
     }
 
     initReferenceData();

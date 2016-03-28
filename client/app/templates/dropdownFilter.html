@@ -1,5 +1,5 @@
 <div class="row">
-    <label for="colour" class="col-md-3">Colour:</label>
+    <label for="colour" class="col-md-3">{{ description }}:</label>
     <select id="colour" class="col-md-6" ng-model="vm.selectedValue">
         <option ng-repeat="value in vm.values | orderBy: 'toString()'">{{ value.name }}</option>
     </select>

@@ -1,9 +1,10 @@
 <div class="row">
     <h3>Filters</h3>
 </div>
-<cs-filter-dropdown view-model="vm.colourFilter"></cs-filter-dropdown>
-<cs-filter-dropdown view-model="vm.brandFilter"></cs-filter-dropdown>
-<cs-filter-dropdown view-model="vm.yearFilter"></cs-filter-dropdown>
+<cs-filter-dropdown view-model="vm.colourFilter" description="Colour"></cs-filter-dropdown>
+<cs-filter-dropdown view-model="vm.brandFilter" description="Brand"></cs-filter-dropdown>
+<cs-filter-dropdown view-model="vm.yearFilter" description="Year"></cs-filter-dropdown>
 <div class="row">
     <button ng-click="vm.doSearch(vm)">Show results</button>
+    <button ng-click="vm.clear(vm)">Clear filter</button>
 </div>
