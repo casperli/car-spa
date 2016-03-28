@@ -53,20 +53,24 @@ function CarListController(CarListService, ReferenceDataService) {
     vm.cars = [];
 
     vm.filters = {
-        years: ReferenceDataService.loadYears(),
-        brands: [],
+        yearFilter: {
+            values: ReferenceDataService.loadYears(),
+            selectedValue: null
+        },
+        brandFilter: {
+            values: [],
+            selectedValue: null
+        },
         colourFilter: {
             values: [],
             selectedValue: null
         },
-        selectedBrand: null,
-        selectedYear: null,
         doSearch: showCars
     }
 
     function initReferenceData() {
         ReferenceDataService.loadBrands().then(function (data) {
-            vm.filters.brands = data;
+            vm.filters.brandFilter.values = data;
         });
 
         ReferenceDataService.loadColours().then(function (data) {
@@ -75,7 +79,7 @@ function CarListController(CarListService, ReferenceDataService) {
     }
 
     function showCars(filters) {
-        CarListService.loadCars(filters.selectedYear, filters.selectedBrand, filters.colourFilter.selectedValue)
+        CarListService.loadCars(filters.yearFilter.selectedValue, filters.brandFilter.selectedValue, filters.colourFilter.selectedValue)
             .then(function (cars) {
                 vm.cars = cars;
             });
@@ -156,7 +160,7 @@ function ReferenceDataService($http, $q) {
         $http.get('http://localhost:8081/' + apiEntity).then(function (response) {
             var entities = angular.copy(response.data);
             deferred.resolve(entities);
-        })
+        });
 
         return deferred.promise;
     }
@@ -165,7 +169,7 @@ function ReferenceDataService($http, $q) {
         var years = [];
 
         for (var i = begin; i <= end; i++) {
-            years.push(i);
+            years.push({name: i});
         }
 
         return years;

@@ -2,18 +2,8 @@
     <h3>Filters</h3>
 </div>
 <cs-filter-dropdown view-model="vm.colourFilter"></cs-filter-dropdown>
-<div class="row">
-    <label for="brand" class="col-md-3">Brand:</label>
-    <select id="brand" class="col-md-6" ng-model="vm.selectedBrand">
-        <option ng-repeat="brand in vm.brands | orderBy: 'name'">{{ brand.name }}</option>
-    </select>
-</div>
-<div class="row">
-    <label for="year" class="col-md-3">Year:</label>
-    <select id="year" class="col-md-6" ng-model="vm.selectedYear">
-        <option ng-repeat="year in vm.years | orderBy: 'valueOf()' : true">{{ year }}</option>
-    </select>
-</div>
+<cs-filter-dropdown view-model="vm.brandFilter"></cs-filter-dropdown>
+<cs-filter-dropdown view-model="vm.yearFilter"></cs-filter-dropdown>
 <div class="row">
     <button ng-click="vm.doSearch(vm)">Show results</button>
 </div>
