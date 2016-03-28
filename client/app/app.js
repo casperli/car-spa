@@ -33,6 +33,17 @@ function FilterWidget() {
     }
 }
 
+carSpa.directive('csFilterDropdown', FilterDropdown);
+function FilterDropdown() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/dropdownFilter.html',
+        scope: {
+            vm: '=viewModel'
+        }
+    }
+}
+
 carSpa.controller('CarListController', CarListController);
 CarListController.$inject = ['CarListService', 'ReferenceDataService'];
 
@@ -43,10 +54,12 @@ function CarListController(CarListService, ReferenceDataService) {
 
     vm.filters = {
         years: ReferenceDataService.loadYears(),
-        colours: [],
         brands: [],
+        colourFilter: {
+            values: [],
+            selectedValue: null
+        },
         selectedBrand: null,
-        selectedColour: null,
         selectedYear: null,
         doSearch: showCars
     }
@@ -57,12 +70,12 @@ function CarListController(CarListService, ReferenceDataService) {
         });
 
         ReferenceDataService.loadColours().then(function (data) {
-            vm.filters.colours = data;
+            vm.filters.colourFilter.values = data;
         });
     }
 
     function showCars(filters) {
-        CarListService.loadCars(filters.selectedYear, filters.selectedBrand, filters.selectedColour)
+        CarListService.loadCars(filters.selectedYear, filters.selectedBrand, filters.colourFilter.selectedValue)
             .then(function (cars) {
                 vm.cars = cars;
             });

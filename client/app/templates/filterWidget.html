@@ -1,12 +1,7 @@
 <div class="row">
     <h3>Filters</h3>
 </div>
-<div class="row">
-    <label for="colour" class="col-md-3">Colour:</label>
-    <select id="colour" class="col-md-6" ng-model="vm.selectedColour">
-        <option ng-repeat="colour in vm.colours | orderBy: 'name'">{{ colour.name }}</option>
-    </select>
-</div>
+<cs-filter-dropdown view-model="vm.colourFilter"></cs-filter-dropdown>
 <div class="row">
     <label for="brand" class="col-md-3">Brand:</label>
     <select id="brand" class="col-md-6" ng-model="vm.selectedBrand">
