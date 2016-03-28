@@ -1,0 +1,40 @@
+{
+  "cars": [
+    {
+      "colour": "Red",
+      "brand": "Volkswagen",
+      "name": "Beetle (remote)",
+      "year": "1965"
+    },
+    {
+      "colour": "Blue",
+      "brand": "Toyota",
+      "name": "Prius",
+      "year": "2012"
+    }
+  ],
+  "brands": [
+    {
+      "brandCode": "chevy",
+      "name": "Chevrolet"
+    },
+    {
+      "brandCode": "vw",
+      "name": "Volkswagen"
+    },
+    {
+      "brandCode": "toy",
+      "name": "Toyota"
+    }
+  ],
+  "colours": [
+    {
+      "colourCode": "blue",
+      "description": "Blue"
+    },
+    {
+      "colourCode": "red",
+      "description": "Red"
+    }
+  ]
+}

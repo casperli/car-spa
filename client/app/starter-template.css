@@ -8,6 +8,7 @@ body {
 }
 
 img.screen-shot {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: thin solid;
 }

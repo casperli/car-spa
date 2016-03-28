@@ -88,7 +88,7 @@ function CarListService($http, $q) {
     function loadCars() {
         var deferred = $q.defer();
 
-        $http.get('http://localhost:8081/api/cars').then(function (response) {
+        $http.get('http://localhost:8081/cars').then(function (response) {
             var cars = angular.copy(response.data);
             deferred.resolve(cars);
         });
@@ -121,7 +121,7 @@ function ReferenceDataService($http, $q) {
     function loadData(apiEntity){
         var deferred = $q.defer();
         
-        $http.get('http://localhost:8081/api/' + apiEntity).then(function (response) {
+        $http.get('http://localhost:8081/' + apiEntity).then(function (response) {
             var entities = angular.copy(response.data);
             deferred.resolve(entities);
         })
