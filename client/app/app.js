@@ -76,6 +76,11 @@ function CarListController(CarListService, ReferenceDataService) {
         ReferenceDataService.loadColours().then(function (data) {
             vm.filters.colourFilter.values = data;
         });
+        ReferenceDataService.loadPresetValues().then(function (data) {
+            vm.filters.brandFilter.selectedValue = data.brandFilter.selectedValue;
+            vm.filters.colourFilter.selectedValue = data.colourFilter.selectedValue;
+            vm.filters.yearFilter.selectedValue = data.yearFilter.selectedValue;
+        });
     }
 
     function showCars(filters) {
@@ -154,6 +159,17 @@ function ReferenceDataService($http, $q) {
         return initYears(1960, 2016);
     }
 
+    function loadPresetValues() {
+        var deferred = $q.defer();
+
+        $http.get('http://localhost:8081/selectedFilterValues').then(function (response) {
+            var result = angular.copy(response.data);
+            deferred.resolve(result);
+        });
+
+        return deferred.promise;
+    }
+
     function loadData(apiEntity) {
         var deferred = $q.defer();
 
@@ -169,7 +185,7 @@ function ReferenceDataService($http, $q) {
         var years = [];
 
         for (var i = begin; i <= end; i++) {
-            years.push({name: i});
+            years.push({name: i.toString()});
         }
 
         return years;
@@ -178,6 +194,7 @@ function ReferenceDataService($http, $q) {
     return {
         loadColours: loadColours,
         loadBrands: loadBrands,
-        loadYears: loadYears
+        loadYears: loadYears,
+        loadPresetValues: loadPresetValues
     }
 }
