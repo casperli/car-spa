@@ -1,0 +1,24 @@
+<div class="row">
+    <h3>Filters</h3>
+</div>
+<div class="row">
+    <label for="colour" class="col-md-3">Colour:</label>
+    <select id="colour" class="col-md-6" ng-model="vm.selectedColour">
+        <option ng-repeat="colour in vm.colours | orderBy: 'name'">{{ colour.name }}</option>
+    </select>
+</div>
+<div class="row">
+    <label for="brand" class="col-md-3">Brand:</label>
+    <select id="brand" class="col-md-6" ng-model="vm.selectedBrand">
+        <option ng-repeat="brand in vm.brands | orderBy: 'name'">{{ brand.name }}</option>
+    </select>
+</div>
+<div class="row">
+    <label for="year" class="col-md-3">Year:</label>
+    <select id="year" class="col-md-6" ng-model="vm.selectedYear">
+        <option ng-repeat="year in vm.years | orderBy: 'valueOf()' : true">{{ year }}</option>
+    </select>
+</div>
+<div class="row">
+    <button ng-click="vm.doSearch(vm)">Show results</button>
+</div>

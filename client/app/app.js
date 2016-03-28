@@ -22,11 +22,16 @@ function urlConfiguration($stateProvider, $urlRouterProvider) {
     });
 }
 
-// carSpa.directive('FilterWidget', FilterWidget);
-// function FilterWidget() {
-//
-// }
-
+carSpa.directive('csFilterWidget', FilterWidget);
+function FilterWidget() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/filterWidget.html',
+        scope: {
+            vm: '=viewModel'
+        }
+    }
+}
 
 carSpa.controller('CarListController', CarListController);
 CarListController.$inject = ['CarListService', 'ReferenceDataService'];
@@ -42,8 +47,8 @@ function CarListController(CarListService, ReferenceDataService) {
         brands: [],
         selectedBrand: null,
         selectedColour: null,
-        selectedYear: null
-
+        selectedYear: null,
+        doSearch: showCars
     }
 
     function initReferenceData() {
@@ -56,14 +61,12 @@ function CarListController(CarListService, ReferenceDataService) {
         });
     }
 
-    function showCars() {
-        CarListService.loadCars(vm.filters.selectedYear, vm.filters.selectedBrand, vm.filters.selectedColour)
+    function showCars(filters) {
+        CarListService.loadCars(filters.selectedYear, filters.selectedBrand, filters.selectedColour)
             .then(function (cars) {
                 vm.cars = cars;
             });
     }
-
-    vm.showCars = showCars;
 
     initReferenceData();
 

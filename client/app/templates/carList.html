@@ -2,34 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <!--<cs-filter-widget view-model="vm.filters"></cs-filter-widget>-->
-
-
-            <div class="row">
-                <h3>Filters</h3>
-            </div>
-            <div class="row">
-                <label for="colour" class="col-md-3">Colour:</label>
-                <select id="colour" class="col-md-6" ng-model="vm.filters.selectedColour">
-                    <option ng-repeat="colour in vm.filters.colours | orderBy: 'name'">{{ colour.name }}</option>
-                </select>
-            </div>
-            <div class="row">
-                <label for="brand" class="col-md-3">Brand:</label>
-                <select id="brand" class="col-md-6" ng-model="vm.filters.selectedBrand">
-                    <option ng-repeat="brand in vm.filters.brands | orderBy: 'name'">{{ brand.name }}</option>
-                </select>
-            </div>
-            <div class="row">
-                <label for="year" class="col-md-3">Year:</label>
-                <select id="year" class="col-md-6" ng-model="vm.filters.selectedYear">
-                    <option ng-repeat="year in vm.filters.years | orderBy: 'valueOf()' : true">{{ year }}</option>
-                </select>
-            </div>
-            <div class="row">
-                <button ng-click="vm.showCars()">Show results</button>
-            </div>
-
+            <cs-filter-widget view-model="vm.filters"></cs-filter-widget>
         </div>
         <div class="col-md-8">
             <div class="row">
