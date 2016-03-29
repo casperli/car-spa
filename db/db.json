@@ -10,7 +10,7 @@
       "colour": "Blue",
       "brand": "Toyota",
       "name": "Prius",
-      "year": "2012"
+      "year": 2012
     }
   ],
   "brands": [
@@ -40,13 +40,13 @@
   ],
   "selectedFilterValues": {
     "yearFilter": {
-      "selectedValue": null
+      "selectedValue": "2012"
     },
     "brandFilter": {
-      "selectedValue": null
+      "selectedValue": "Toyota"
     },
     "colourFilter": {
-      "selectedValue": null
+      "selectedValue": "Blue"
     }
   }
 }
